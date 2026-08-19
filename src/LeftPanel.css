@@ -1,0 +1,14 @@
+.three-logo {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 40vh;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#left-panel {
+  width: 50%;
+  height: 100%;
+}
