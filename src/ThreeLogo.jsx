@@ -64,16 +64,18 @@ function ThreeLogo({ ascii }) {
       alpha: false,
     });
 
+    renderer.setPixelRatio(1);
     renderer.setSize(container.clientWidth, container.clientHeight);
-
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     const effect = new AsciiEffect(renderer, " .:-=+*#%@", {
       invert: true,
-      resolution: 0.3,
+      resolution: 0.5,
     });
 
     effect.setSize(container.clientWidth, container.clientHeight);
+    effect.domElement.style.position = "absolute";
+    effect.domElement.style.left = "0";
+    effect.domElement.style.top = "0";
 
     rendererRef.current = renderer;
     effectRef.current = effect;
@@ -118,7 +120,7 @@ function ThreeLogo({ ascii }) {
         });
 
         text = new THREE.Mesh(geometry, textMaterial);
-
+        text.position.set(8, 0, 0);
         scene.add(text);
 
         function animate() {
@@ -127,10 +129,8 @@ function ThreeLogo({ ascii }) {
           text.rotation.y += 0.01;
 
           if (asciiMode.current) {
-            camera.position.x = -2.8;
             effect.render(scene, camera);
           } else {
-            camera.position.x = 0.0;
             renderer.render(scene, camera);
           }
 

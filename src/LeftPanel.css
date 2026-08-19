@@ -7,8 +7,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
+
+.three-logo table {
+  margin: 0;
+  font-family: monospace;
+}
+
 #left-panel {
   width: 50%;
   height: 100%;
+  @media (max-width: 800px) {
+    width: 100%;
+    height: 30%;
+  }
 }
