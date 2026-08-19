@@ -51,7 +51,7 @@ function ThreeLogo({ ascii }) {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(
-      70,
+      45,
       container.clientWidth / container.clientHeight,
       0.1,
       100,
@@ -120,7 +120,7 @@ function ThreeLogo({ ascii }) {
         });
 
         text = new THREE.Mesh(geometry, textMaterial);
-        text.position.set(8, 0, 0);
+        //text.position.set(8, 0, 0);
         scene.add(text);
 
         function animate() {

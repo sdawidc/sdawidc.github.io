@@ -8,11 +8,14 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  @media (max-width: 800px) {
+    height: 20vw;
+  }
 }
 
-.three-logo table {
-  margin: 0;
+.three-logo table td {
   font-family: monospace;
+  background-color: green;
 }
 
 #left-panel {
