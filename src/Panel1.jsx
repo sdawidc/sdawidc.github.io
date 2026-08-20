@@ -7,7 +7,7 @@ function Panel1({ header, text }) {
     <>
       <div className="panel">
         <h1>{header}</h1>
-        <p>{text}</p>
+        <div>{text}</div>
       </div>
     </>
   );

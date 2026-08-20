@@ -1,0 +1,13 @@
+.info-stat {
+  border: 0px solid var(--accent);
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+}
+.info-stat-text {
+  text-align: center;
+}
+.info-stat-value {
+  color: var(--accent);
+  text-align: center;
+}
