@@ -36,25 +36,24 @@ function ThreeLogo({ ascii = true, text: label = "ciess.dev", cellSize = 8 }) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
     renderer.setClearColor(0x000000, 0);
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    /*    renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.0;
+    renderer.toneMappingExposure = 1.0;*/
     container.appendChild(renderer.domElement);
 
     function getAsciiCellSize(width) {
-      if (width < 800) return 4;
-      if (width < 1200) return 6;
-      return 8;
+      if (width < 800) return 3;
+      return 4;
     }
 
     const asciiEffect = new AsciiEffect(renderer, {
-      cellSize: getAsciiCellSize(width),
+      cellSize: getAsciiCellSize(window.innerWidth),
       color: "#00e5ff",
       invert: false,
     });
     asciiEffect.setSize(width, height);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 2.3);
     scene.add(ambientLight);
 
     const light = new THREE.PointLight(0xffffff, 50);
@@ -62,7 +61,11 @@ function ThreeLogo({ ascii = true, text: label = "ciess.dev", cellSize = 8 }) {
     light.distance = 8;
     light.position.set(0, 0.2, 4);
     //scene.add(light);
-
+    console.log(window.innerWidth);
+    if (window.innerWidth < 1200) {
+      ambientLight.intensity = 3;
+      light.intensity = 0;
+    }
     const logoGroup = new THREE.Group();
     logoGroup.add(light);
     scene.add(logoGroup);

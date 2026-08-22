@@ -2,6 +2,7 @@
   --bg: #080b10;
   --surface: #10151c;
   --surface-light: #171e27;
+  --surface-lighter: #212935;
 
   --border: #26313d;
 
@@ -38,7 +39,7 @@ body {
 
 #root {
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   margin: 0 auto;
   text-align: center;
   display: flex;

@@ -1,63 +1,73 @@
-import { useState } from "react";
 import "./ProjectPanel.css";
 import InfoStat from "./InfoStat";
 
-function ProjectPanel({ imgPath, link }) {
-  const award = (
-    <>
-      <div className="award-block">
-        <span className="award">🥉</span>
-        <br />
-        Trzecie miejsce na konkursie ZTGK (2026) <br />
-        Kategoria Game Development
-      </div>
-    </>
-  );
-
-  const role = (
-    <>
-      <div>
-        silnik ECS
-        <br />
-        optymalizacja
-        <br />
-        streaming mapy
-        <br />
-        voxelizacja modeli
-        <br />
-        ...
-      </div>
-    </>
-  );
-
+function ProjectPanel({ project }) {
   return (
-    <>
-      <div className="project-panel">
-        <img src={imgPath} alt="Zdjęcie projektu" />
-        <div>
+    <div className="project-panel">
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener"
+        className="project-image-link"
+      >
+        <img src={project.image} alt={`Zdjęcie projektu ${project.title}`} />
+      </a>
+      <h2>{project.title}</h2>
+      <div>
+        {project.award && (
           <div className="project-row">
-            <InfoStat text={award} value="" />
+            <InfoStat
+              text={
+                <>
+                  <span className="award">{project.award.icon}</span>
+                  <br />
+                  {project.award.text}
+                  <br />
+                  Kategoria {project.award.category}
+                </>
+              }
+              value=""
+            />
           </div>
-          <div className="project-row">
-            <InfoStat text="Technologia" value="C# + Monogame + HLSL" />
-            <InfoStat text="Liczba osób w zespole" value="6" />
-          </div>
-          <div className="project-row">
-            <InfoStat text="Moja rola" value={role} />
-          </div>
-          <div className="project-row">
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-button"
-            >
-              ITCH.IO
-            </a>
-          </div>
+        )}
+
+        <div className="project-row">
+          <InfoStat text="Technologia" value={project.technology} />
+
+          <InfoStat
+            text="Liczba osób w zespole"
+            value={project.membersAmount}
+          />
+        </div>
+
+        <div className="project-row">
+          <InfoStat
+            text="Moja rola"
+            value={
+              <>
+                {project.role.map((role, index) => (
+                  <span key={index}>
+                    {role}
+                    {index < project.role.length - 1 && <br />}
+                  </span>
+                ))}
+              </>
+            }
+          />
+        </div>
+
+        <div className="project-row">
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener"
+            className="project-button"
+          >
+            ITCH.IO
+          </a>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

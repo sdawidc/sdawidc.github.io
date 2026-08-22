@@ -6,6 +6,7 @@
   width: 50%;
   height: 95%;
 
+  box-sizing: border-box;
   margin: auto auto;
   padding: 0 30px;
 
@@ -44,4 +45,11 @@
 
 #right-panel::-webkit-scrollbar-thumb:hover {
   background: var(--accent-hover);
+}
+
+.projects-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

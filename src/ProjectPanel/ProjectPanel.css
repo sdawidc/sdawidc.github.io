@@ -5,21 +5,25 @@
   border: 1px solid var(--accent);
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+
   flex-direction: column;
 }
 
-.project-panel > img {
-  width: 90%;
+.project-image-link {
+  width: 100%;
+  display: block;
+}
+
+.project-image-link > img {
+  width: 100%;
   object-fit: fill;
+  border-radius: 10px 10px 0px 0px;
   transition:
-    width 0.3s ease,
     filter 0.3s ease,
     box-shadow 0.3s ease;
 }
 
-.project-panel > img:hover {
-  width: 100%;
+.project-image-link > img:hover {
   filter: brightness(1.15);
   box-shadow: 0 0 60px var(--accent);
 }
@@ -33,7 +37,7 @@
 .project-button {
   width: 100%;
   color: var(--accent);
-  background-color: var(--surface-light);
+  background-color: var(--surface-lighter);
   border: 0px solid var(--accent);
   box-shadow: 0 0 10px var(--border);
   border-radius: 10px;
@@ -50,7 +54,6 @@
 }
 
 .project-button:hover {
-  background-color: var(--surface);
   box-shadow: 0 0 15px var(--accent);
 }
 
@@ -68,4 +71,8 @@
 }
 .award-block {
   font-weight: 600;
+}
+
+h2 {
+  margin: 2px;
 }
