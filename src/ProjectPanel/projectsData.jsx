@@ -3,6 +3,7 @@ export const projects = [
     title: "Wild Wild Train",
     description: "Gra endless runner osadzona w klimacie Dzikiego Zachodu.",
     image: "./wild.gif",
+    video: "/wild.webm",
     link: "https://framedropgames.itch.io/wild-wild-train",
 
     award: {
@@ -30,6 +31,7 @@ export const projects = [
     description: "Gra wykorzystująca system interpretacji komend.",
     image: "./consoul.gif",
     link: "https://przemeoo.itch.io/consoul",
+    video: "/consoul.webm",
 
     award: null,
 

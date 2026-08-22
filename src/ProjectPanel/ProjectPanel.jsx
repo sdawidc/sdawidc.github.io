@@ -1,9 +1,41 @@
+import { useEffect, useRef } from "react";
 import "./ProjectPanel.css";
 import InfoStat from "./InfoStat";
 
 function ProjectPanel({ project }) {
+  const panelRef = useRef(null);
+
+  useEffect(() => {
+    const element = panelRef.current;
+    const scrollContainer = document.querySelector("#right-panel");
+
+    if (!element || !scrollContainer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && project.video) {
+          window.dispatchEvent(
+            new CustomEvent("three-logo-video", {
+              detail: project.video,
+            }),
+          );
+        }
+      },
+      {
+        root: scrollContainer,
+        threshold: 0.5,
+      },
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [project]);
+
   return (
-    <div className="project-panel">
+    <div ref={panelRef} className="project-panel">
       <a
         href={project.link}
         target="_blank"
@@ -12,7 +44,10 @@ function ProjectPanel({ project }) {
       >
         <img src={project.image} alt={`Zdjęcie projektu ${project.title}`} />
       </a>
-      <h2>{project.title}</h2>
+      <div className="project-title">
+        <h2>{project.title}</h2>
+        <div>{project.description}</div>
+      </div>
       <div>
         {project.award && (
           <div className="project-row">
@@ -20,10 +55,16 @@ function ProjectPanel({ project }) {
               text={
                 <>
                   <span className="award">{project.award.icon}</span>
+
                   <br />
+
                   {project.award.text}
+
                   <br />
-                  Kategoria {project.award.category}
+
+                  {project.award.category && (
+                    <>Kategoria {project.award.category}</>
+                  )}
                 </>
               }
               value=""
@@ -48,6 +89,7 @@ function ProjectPanel({ project }) {
                 {project.role.map((role, index) => (
                   <span key={index}>
                     {role}
+
                     {index < project.role.length - 1 && <br />}
                   </span>
                 ))}
@@ -63,7 +105,7 @@ function ProjectPanel({ project }) {
             rel="noopener"
             className="project-button"
           >
-            ITCH.IO
+            <h2>ITCH.IO</h2>
           </a>
         </div>
       </div>

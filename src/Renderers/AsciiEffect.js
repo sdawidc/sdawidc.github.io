@@ -32,7 +32,7 @@ const FRAGMENT_SHADER = `
     vec3(0.299, 0.587, 0.114)
 );
 
-brightness = smoothstep(0.05, 1.0, brightness);
+brightness = clamp(brightness * 2.5, 0.0, 1.0);
     if (invert) brightness = 1.0 - brightness;
 
     float charIndex = floor(brightness * (charCount - 1.0));
@@ -78,7 +78,7 @@ export class AsciiEffect {
   constructor(
     renderer,
     {
-      chars = " .:-=+*#%@",
+      chars = " .,:;irsXA253hMHGS#9B&@",
       cellSize = 10,
       color = "#ffffff",
       invert = true,
