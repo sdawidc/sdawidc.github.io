@@ -3,12 +3,10 @@ import ThreeLogo from "./ThreeLogo";
 import "./LeftPanel.css";
 
 function LeftPanel() {
-  const [ascii, setAscii] = useState(true);
-
   return (
     <div id="left-panel">
       <ThreeLogo
-        ascii={ascii}
+        ascii={true}
         project={{
           video: "/wild.webm",
         }}

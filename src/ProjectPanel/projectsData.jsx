@@ -1,7 +1,8 @@
 export const projects = [
   {
     title: "Wild Wild Train",
-    description: "Gra endless runner osadzona w klimacie Dzikiego Zachodu.",
+    description:
+      "Voxelowy endless runner, w którym modyfikujesz świat w czasie rzeczywistym",
     image: "./wild.gif",
     video: "/wild.webm",
     link: "https://framedropgames.itch.io/wild-wild-train",
@@ -16,19 +17,19 @@ export const projects = [
     membersAmount: 6,
 
     role: [
-      "pomysł",
-      "silnik ECS",
-      "optymalizacja",
-      "streaming mapy",
-      "voxelizacja modeli",
-      "voxel workflow",
-      "...",
+      { text: "pomysł" },
+      { text: "system interpretacji komend" },
+      { text: "optymalizacja (~930 FPS dla ~420M voxeli)", pdf: "/poster.pdf" },
+      { text: "system interakcji komend ze światem" },
+      { text: "Quality of Life" },
+      { text: "..." },
     ],
   },
 
   {
     title: "Consoul",
-    description: "Gra wykorzystująca system interpretacji komend.",
+    description:
+      "Pokonuj poziomy robotem przeprowadzając interakcje ze światem za pomocą wbudowanej konsoli",
     image: "./consoul.gif",
     link: "https://przemeoo.itch.io/consoul",
     video: "/consoul.webm",
@@ -39,12 +40,13 @@ export const projects = [
     membersAmount: 5,
 
     role: [
-      "pomysł",
-      "system interpretacji komend",
-      "optymalizacja",
-      "system interakcji komend ze światem",
-      "Quality of Life",
-      "...",
+      { text: "pomysł" },
+      { text: "silnik ECS" },
+      { text: "optymalizacja" },
+      { text: "streaming mapy" },
+      { text: "voxelizacja modeli" },
+      { text: "voxel workflow" },
+      { text: "..." },
     ],
   },
 ];

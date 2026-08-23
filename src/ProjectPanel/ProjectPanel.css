@@ -64,9 +64,6 @@
   transition: width 0.3s ease;
 }
 
-.award {
-  font-size: 40px;
-}
 .award-block {
   font-weight: 600;
 }
@@ -78,4 +75,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+.award {
+  margin: 0;
 }

@@ -11,3 +11,53 @@
   color: var(--accent);
   text-align: center;
 }
+
+/* spaghetti do interpolowania zmiennej wlasciwosci shadow size w animacji zeby link byl widoczny */
+@property --shadow-size {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 2px;
+}
+
+.info-stat a {
+  --blur-color: darkred;
+  --blur-size: 5px;
+  --shadow-size: 2px;
+
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--accent-hover);
+
+  text-shadow:
+    calc(-1 * var(--shadow-size)) calc(-1 * var(--shadow-size)) var(--blur-size)
+      var(--blur-color),
+    var(--shadow-size) calc(-1 * var(--shadow-size)) var(--blur-size)
+      var(--blur-color),
+    calc(-1 * var(--shadow-size)) var(--shadow-size) var(--blur-size)
+      var(--blur-color),
+    var(--shadow-size) var(--shadow-size) var(--blur-size) var(--blur-color);
+
+  animation: shadow-pulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes shadow-pulse {
+  from {
+    --shadow-size: 2px;
+  }
+
+  to {
+    --shadow-size: 6px;
+  }
+}
+
+.info-stat a:visited {
+  color: var(--accent-hover);
+}
+
+.info-stat a img {
+  width: 1em;
+  height: 1em;
+  margin-left: 0.25em;
+  vertical-align: -0.25em;
+  object-fit: contain;
+}

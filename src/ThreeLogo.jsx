@@ -6,7 +6,7 @@ import { AsciiEffect } from "./Renderers/AsciiEffect.js";
 
 function ThreeLogo({
   ascii = false,
-  text: label = "ciess.dev",
+  text: label = "Dawid Ciesielski",
   invert = false,
 }) {
   const containerRef = useRef(null);
@@ -34,10 +34,10 @@ function ThreeLogo({
 
     const renderer = new THREE.WebGLRenderer({
       alpha: !invert,
-      antialias: true,
+      antialias: false,
     });
 
-    renderer.setPixelRatio(1);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
     renderer.setClearColor(0x000000, invert);
 
@@ -61,7 +61,7 @@ function ThreeLogo({
     const group = new THREE.Group();
 
     scene.add(group);
-    group.add(light);
+    //group.add(light);
 
     let video = document.createElement("video");
     let videoTexture = null;
@@ -101,19 +101,24 @@ function ThreeLogo({
     videoMesh.position.set(0, -1.5, 0);
     group.add(videoMesh);
 
-    function changeVideo(event) {
-      const src = event.detail;
+    const defaultVideo = "/marketsim.mp4";
 
-      if (!src || !video) return;
+    function changeVideo(event) {
+      const src = event.detail || defaultVideo;
+      if (!video) return;
 
       video.pause();
       video.src = src;
       video.load();
 
-      video.play().catch(() => {});
+      video.play().catch((err) => {
+        //console.log(err);
+      });
     }
 
     window.addEventListener("three-logo-video", changeVideo);
+
+    changeVideo({ detail: defaultVideo });
 
     let textGeometry = null;
     let textMaterial = null;
@@ -126,7 +131,7 @@ function ThreeLogo({
 
       textGeometry = new TextGeometry(label, {
         font,
-        size: 2.4,
+        size: 1.4,
         depth: 0.2,
         curveSegments: 3,
         bevelEnabled: true,
@@ -181,10 +186,10 @@ function ThreeLogo({
 
       group.rotation.y = Math.sin(time * 0.001) * 0.4;
 
-      light.position.lerp(targetLight, 0.08);
+      //light.position.lerp(targetLight, 0.08);
 
       if (!mouseOver) {
-        targetLight.set(Math.sin(time * 0.0007) * 4.2, 0.2, 2);
+        //targetLight.set(Math.sin(time * 0.0007) * 4.2, 5, 2);
       }
 
       if (asciiRef.current) {
@@ -201,10 +206,8 @@ function ThreeLogo({
       const h = container.clientHeight;
 
       if (!w || !h) return;
-
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
-
       renderer.setSize(w, h);
       asciiEffect.setSize(w, h);
       asciiEffect.setCellSize(window.innerWidth < 800 ? 2 : 3);

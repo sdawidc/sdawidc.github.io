@@ -54,9 +54,7 @@ function ProjectPanel({ project }) {
             <InfoStat
               text={
                 <>
-                  <span className="award">{project.award.icon}</span>
-
-                  <br />
+                  <h1 className="award">{project.award.icon}</h1>
 
                   {project.award.text}
 
@@ -88,7 +86,21 @@ function ProjectPanel({ project }) {
               <>
                 {project.role.map((role, index) => (
                   <span key={index}>
-                    {role}
+                    {role.pdf ? (
+                      <>
+                        <a
+                          href={role.pdf}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="role-link"
+                        >
+                          {role.text}
+                          <img src="/pdf.svg" alt="pdf" />
+                        </a>
+                      </>
+                    ) : (
+                      role.text
+                    )}
 
                     {index < project.role.length - 1 && <br />}
                   </span>
