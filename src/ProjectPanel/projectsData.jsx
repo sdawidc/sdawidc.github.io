@@ -3,7 +3,7 @@ export const projects = [
     title: "Wild Wild Train",
     description:
       "Voxelowy endless runner, w którym modyfikujesz świat w czasie rzeczywistym",
-    image: "./wild.gif",
+    image: "/wild.gif",
     video: "/wild.webm",
     link: "https://framedropgames.itch.io/wild-wild-train",
 
@@ -30,7 +30,7 @@ export const projects = [
     title: "Consoul",
     description:
       "Pokonuj poziomy robotem przeprowadzając interakcje ze światem za pomocą wbudowanej konsoli",
-    image: "./consoul.gif",
+    image: "/consoul.gif",
     link: "https://przemeoo.itch.io/consoul",
     video: "/consoul.webm",
 
