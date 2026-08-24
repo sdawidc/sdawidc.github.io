@@ -1,3 +1,4 @@
-# React + Vite + Three.js
+# Portfolio
 
-Portfolio WIP
+React+Vite+Three.JS
+https://sdawidc.github.io/
