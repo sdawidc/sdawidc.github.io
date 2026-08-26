@@ -2,7 +2,7 @@ import { useState } from "react";
 import { projects } from "./ProjectPanel/projectsData";
 import ProjectPanel from "./ProjectPanel/ProjectPanel";
 import Panel1 from "./Panel1";
-import ThreeLogo from "./ThreeLogo";
+import ThreeLogo from "./LeftPanel/ThreeLogo";
 import "./RightPanel.css";
 import StackIcon from "tech-stack-icons";
 

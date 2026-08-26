@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Panel.css";
-import ThreeLogo from "./ThreeLogo";
+import ThreeLogo from "./LeftPanel/ThreeLogo";
 
 function Panel1({ header, text }) {
   return (

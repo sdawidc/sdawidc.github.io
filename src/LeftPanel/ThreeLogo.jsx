@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
-import { AsciiEffect } from "./Renderers/AsciiEffect.js";
+import { AsciiEffect } from "../Renderers/AsciiEffect.js";
 
 function ThreeLogo({
   ascii = false,
